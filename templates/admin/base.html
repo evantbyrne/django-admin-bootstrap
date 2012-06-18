@@ -2,10 +2,12 @@
 <html lang="{{ LANGUAGE_CODE|default:"en-us" }}" xml:lang="{{ LANGUAGE_CODE|default:"en-us" }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
 	<head>
 		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
 		<title>{% block title %}{% endblock %}</title>
-		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}admin/css/bootstrap.css" />
-		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}admin/css/rewrite.css" />
-		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}admin/css/bootstrap-responsive.css" />
+		<link rel="stylesheet" href="{{ MEDIA_URL }}admin/css/bootstrap.css" />
+		<link rel="stylesheet" href="{{ MEDIA_URL }}admin/css/rewrite.css" />
+		<link rel="stylesheet" href="{{ MEDIA_URL }}admin/css/bootstrap-responsive.css" />
 		{% block extrastyle %}{% endblock %}
 		{% block extrahead %}{% endblock %}
 		{% block blockbots %}
@@ -13,13 +15,18 @@
 		{% endblock %}
 	</head>
 	{% load i18n %}
-	<body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}">
+	<body>
 		{% if not is_popup %}
 		{% if user.is_active and user.is_staff %}
 		<!-- Navigation -->
-		<div class="navbar">
+		<div class="navbar navbar-fixed-top">
 			<div class="navbar-inner">
 				<div class="container">
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</a>
 					<div class="nav-collapse">
 						<ul class="nav">
 							{% block userlinks %}
@@ -101,6 +108,7 @@
 			{% block footer %}{% endblock %}
 		</div>
 
+		<script src="{{ MEDIA_URL }}admin/js/jquery.min.js"></script>
 		<script src="{{ MEDIA_URL }}admin/js/bootstrap.min.js"></script>
 
 	</body>
