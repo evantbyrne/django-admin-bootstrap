@@ -19,13 +19,10 @@
 			{% else %}
 				<th scope="row">{{ model.name }}</th>
 			{% endif %}
-				<td width="20%">
-				<div data-toggle="buttons-checkbox" class="btn-group">
+				<td width="50">
+				<div>
 					{% if model.perms.add %}
 					<a href="{{ model.admin_url }}add/" class="btn">{% trans 'Add' %}</a>
-					{% endif %}
-					{% if model.perms.change %}
-					<a href="{{ model.admin_url }}" class="btn">{% trans 'Change' %}</a>
 					{% endif %}
 				 </div>
 				</td>
