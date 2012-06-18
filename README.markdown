@@ -6,3 +6,6 @@
 	urlpatterns = patterns('',
 	    # ... the rest of your URLconf goes here ...
 	) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+---
+**Credit:** Adapted from: https://github.com/aobo711/bootstrap-django-admin

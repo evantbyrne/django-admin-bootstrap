@@ -1,15 +1,12 @@
 {% extends "admin/base.html" %}
 {% load i18n %}
 
-{% block extrastyle %}<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}admin/css/base.css" />{% endblock %}
-{% block title %}{{ title }} | {% trans '[YOUR SITE NAME] admin' %}{% endblock %}
+{% block title %}{{ title }} | {% trans 'Django site admin' %}{% endblock %}
 
 {% block branding %}
-<h1 id="site-name">
-	<a href="/" title="Go to the home page">{% trans '[YOUR SITE NAME]' %}</a>
-	{# Put your logo in the header if you want: #}
-	{# <img src="{{ MEDIA_URL }}admin/img/sitening_white.png" /> #}
-</h1>
+<div class="page-header">
+	<h1>{% trans 'Django administration' %}</h1>
+</div>
 {% endblock %}
 
-{% block nav-global %}{% endblock %}
+{% block nav-global %}{% endblock %} 
