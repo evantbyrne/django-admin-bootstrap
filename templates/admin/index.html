@@ -1,8 +1,20 @@
 {% extends "admin/base_site.html" %}
 {% load i18n %}
 
+
+<!-- Breadcrumbs -->
 {% block breadcrumbs %}{% endblock %}
 
+
+<!-- Content Title -->
+{% block content_title %}
+<div class="page-header">
+	<h3>Site Administration</h3>
+</div>
+{% endblock %}
+
+
+<!-- Content -->
 {% block content %}
 <div id="content-main">
 	
@@ -36,6 +48,8 @@
 </div>
 {% endblock %}
 
+
+<!-- Sidebar -->
 {% block sidebar %}
 <div class="well">
 	<ul class="nav nav-list">

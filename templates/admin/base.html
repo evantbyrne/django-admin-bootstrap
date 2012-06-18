@@ -21,14 +21,15 @@
 		<!-- Navigation -->
 		<div class="navbar navbar-fixed-top">
 			<div class="navbar-inner">
-				<div class="container">
+				<div class="container-fluid">
+					<a class="brand">{% block branding %}Django Admin{% endblock %}</a>
 					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</a>
 					<div class="nav-collapse">
-						<ul class="nav">
+						<ul class="nav pull-right">
 							{% block userlinks %}
 							<li class="active">
 								<a href="javascript:;">{% trans 'Welcome, ' %}{% filter force_escape %}{% firstof user.first_name user.username %} {% firstof user.last_name user.username %}{% endfilter %}</a>
