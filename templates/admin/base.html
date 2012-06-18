@@ -5,6 +5,7 @@
 		<title>{% block title %}{% endblock %}</title>
 		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}admin/css/bootstrap.css" />
 		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}admin/css/rewrite.css" />
+		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}admin/css/bootstrap-responsive.css" />
 		{% block extrastyle %}{% endblock %}
 		{% block extrahead %}{% endblock %}
 		{% block blockbots %}
@@ -99,6 +100,8 @@
 			
 			{% block footer %}{% endblock %}
 		</div>
+
+		<script src="{{ MEDIA_URL }}admin/js/bootstrap.min.js"></script>
 
 	</body>
 </html>

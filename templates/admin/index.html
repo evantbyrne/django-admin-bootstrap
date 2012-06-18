@@ -53,18 +53,23 @@
 		<li>
 			<p class="tip">{% trans 'None available' %}</p>
 		</li>
+		{% else %}
 		{% for entry in admin_log %}
-		<li class="{% if entry.is_addition %}addlink{% endif %}{% if entry.is_change %}changelink{% endif %}{% if entry.is_deletion %}deletelink{% endif %}">
-			{% if entry.is_deletion or not entry.get_admin_url %}
-				{{ entry.object_repr }}
-			{% else %}
-				<a href="{{ entry.get_admin_url }}">{{ entry.object_repr }}</a>
+		<li>
+			{% if not entry.is_deletion and entry.get_admin_url %}
+				<a href="{{ entry.get_admin_url }}">
 			{% endif %}
-			<br/>
+			
+			<i class="{% if entry.is_addition %}icon-plus{% endif %}{% if entry.is_change %}icon-pencil{% endif %}{% if entry.is_deletion %}icon-minus{% endif %}"></i> {{ entry.object_repr }}
+			
 			{% if entry.content_type %}
-				<span class="mini quiet">{% filter capfirst %}{% trans entry.content_type.name %}{% endfilter %}</span>
+				({% filter capfirst %}{% trans entry.content_type.name %}{% endfilter %})
 			{% else %}
-				<span class="mini quiet">{% trans 'Unknown content' %}</span>
+				({% trans 'Unknown content' %})
+			{% endif %}
+			
+			{% if not entry.is_deletion and entry.get_admin_url %}
+				</a>
 			{% endif %}
 		</li>
 		{% endfor %}
