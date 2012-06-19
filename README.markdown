@@ -1,6 +1,7 @@
 Django's admin interface styled with Twitter Bootstrap. [Github page](https://github.com/evantbyrne/django-admin-bootstrap).
 
-![Django Admin Bootstrap](http://i.imgur.com/4WS6b.png)
+![Django Admin Bootstrap](http://i.imgur.com/yUaIK.png)
+![Django Admin Bootstrap - Listing](http://i.imgur.com/ommwI.png)
 
 **Setup:** Configure _MEDIA\_URL_ and _MEDIA\_ROOT_ in _settings.py_. Then add the following to your _urls.py_:
 
