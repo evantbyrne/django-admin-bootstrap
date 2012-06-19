@@ -47,7 +47,7 @@
 			{% block object-tools-items %}
 				<div class="well">
 					<ul class="nav nav-list">
-						<li><a href="{% url cl.opts|admin_urlname:'add' %}{% if is_popup %}?_popup=1{% endif %}"><i class="icon-plus"></i>{% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}</a>
+						<li><a href="{% url cl.opts|admin_urlname:'add' %}{% if is_popup %}?_popup=1{% endif %}"><i class="icon-plus"></i>{% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}</a></li>
 					</ul>
 				</div>
 			{% endblock %}
