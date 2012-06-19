@@ -2,3 +2,9 @@ body {
     padding-top: 60px;
     padding-bottom: 40px;
 }
+
+.alert ul {
+    list-style:none;
+    padding:0;
+    margin:0;
+}
