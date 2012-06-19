@@ -1,0 +1,88 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_static admin_list %}
+{% load url from future %}
+{% load admin_urls %}
+
+
+<!-- Extra Headers -->
+{% block extrahead %}
+	{{ block.super }}
+	{{ media.js }}
+	{% if action_form %}{% if actions_on_top or actions_on_bottom %}
+		<script type="text/javascript">
+			(function($) {
+				$(document).ready(function($) {
+					$("tr input.action-select").actions();
+				});
+			})(django.jQuery);
+		</script>
+		{% endif %}
+	{% endif %}
+{% endblock %}
+
+
+<!-- Breadcrumbs -->
+{% block breadcrumbs %}
+<ul class="breadcrumb">
+	<li><a href="{% url 'admin:index' %}">{% trans 'Home' %}</a> <span class="divider">/</span></li>
+	<li><a href="{% url 'admin:app_list' app_label=cl.opts.app_label %}">{{ app_label|capfirst|escape }}</a> <span class="divider">/</span></li>
+	<li class="active">{{ cl.opts.verbose_name_plural|capfirst }}</li>
+</ul>
+{% endblock %}
+
+
+<!-- Content Title -->
+{% block content_title %}
+<div class="page-header">
+	<h3>{{ cl.opts.verbose_name_plural|capfirst }}</h3>
+</div>
+{% endblock %}
+
+
+<!-- Sidebar -->
+{% block sidebar %}
+	
+	{% block object-tools %}
+		{% if has_add_permission %}
+			{% block object-tools-items %}
+				<div class="well">
+					<ul class="nav nav-list">
+						<li><a href="{% url cl.opts|admin_urlname:'add' %}{% if is_popup %}?_popup=1{% endif %}"><i class="icon-plus"></i>{% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}</a>
+					</ul>
+				</div>
+			{% endblock %}
+		{% endif %}
+	{% endblock %}
+	
+	{% block search %}{% search_form cl %}{% endblock %}
+	
+	{% if cl.has_filters %}
+		<div class="well">
+			<h3>{% trans 'Filter' %}</h3>
+			{% for spec in cl.filter_specs %}{% admin_list_filter cl spec %}{% endfor %}
+		</div>
+	{% endif %}
+{% endblock %}
+
+
+<!-- Content -->
+{% block content %}
+	
+	<form id="changelist-form" action="" method="post"{% if cl.formset.is_multipart %} enctype="multipart/form-data"{% endif %}>
+		
+		{% csrf_token %}
+		
+		{% if cl.formset %}
+			<div>{{ cl.formset.management_form }}</div>
+		{% endif %}
+
+		{% block result_list %}
+			{% if action_form and actions_on_top and cl.full_result_count %}{% admin_actions %}{% endif %}
+			{% result_list cl %}
+			{% if action_form and actions_on_bottom and cl.full_result_count %}{% admin_actions %}{% endif %}
+		{% endblock %}
+
+		{% block pagination %}{% pagination cl %}{% endblock %}
+	
+	</form>
+{% endblock %}

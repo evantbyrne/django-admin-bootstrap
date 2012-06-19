@@ -16,8 +16,6 @@
 
 <!-- Content -->
 {% block content %}
-<div id="content-main">
-	
 {% if app_list %}
 	{% for app in app_list %}
 		<table class="table table-bordered table-striped" summary="{% blocktrans with app.name as name %}Models available in the {{ name }} application.{% endblocktrans %}">
@@ -45,7 +43,6 @@
 {% else %}
 	<p>{% trans "You don't have permission to edit anything." %}</p>
 {% endif %}
-</div>
 {% endblock %}
 
 
