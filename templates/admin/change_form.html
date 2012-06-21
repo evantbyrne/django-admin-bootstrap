@@ -11,6 +11,10 @@
 {% endblock %}
 
 
+<!-- Extra Style -->
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}admin/css/forms.css" />{% endblock %}
+
+
 <!-- Breadcrumbs -->
 {% block breadcrumbs %}
 <ul class="breadcrumb">
