@@ -5,6 +5,7 @@
 
 <!-- Extra Head -->
 {% block extrahead %}{{ block.super }}
+	<script type="text/javascript">window.__admin_media_prefix__ = "{% filter escapejs %}{% admin_media_prefix %}{% endfilter %}";</script>
 	{% url 'admin:jsi18n' as jsi18nurl %}
 	<script type="text/javascript" src="{{ jsi18nurl|default:"../../../jsi18n/" }}"></script>
 	{{ media }}
